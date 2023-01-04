@@ -13,10 +13,10 @@
             $this->setSaldo(true);
             
             if($t == "CC"){
-                $this->setSaldo = 50;
+                $this->saldo = 50;
             }
             elseif($t == "CP"){
-                $this->setSaldo = 150;
+                $this->saldo = 150;
             }
         }
         public function fecharConta(){
@@ -42,9 +42,12 @@
             if($this->getStatus()){
                 if($this->saldo>$v){
                     $this->setSaldo($this->getSaldo()-$v);
+                
+                    $this->setSaldo($this->getSaldo()-$v);
                 }
                 else{
                     echo "Saldo insuficiente";
+                    
                 }
             }
             else{
