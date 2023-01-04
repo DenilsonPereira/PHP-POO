@@ -10,76 +10,73 @@
         //Metodos
         public function abrirConta($t){
             $this->setTipo($t);
-            $this->setSaldo(true);
+            $this->setStatus(true);
             
             if($t == "CC"){
-                $this->saldo = 50;
+                $this->setSaldo(50);
             }
             elseif($t == "CP"){
-                $this->saldo = 150;
+                $this->setSaldo(150);
             }
         }
         public function fecharConta(){
-            if($this->saldo > 0){
-                echo "Conta com dinheiro";
+            if($this->getSaldo() > 0){
+                echo "<p>Conta com dinheiro</p>";
             }
-            elseif($this->saldo <0){
-                echo "Conta em débito";
+            elseif($this->getSaldo() < 0){
+                echo "<p>Conta em débito</p>";
             }
             else{
                 $this->setStatus(false);
+                echo "<p>Conta de ". $this->getDono()." fechada com sucesso!</p>";
             }
         }
         public function depositar($v){
-            if($this->status == true){
-                $this->setSaldo($this->getSaldo()+$v);
+            if($this->status){
+                $this->setSaldo($this->getSaldo() + $v);
+                echo "<p>Deposito de R$ $v na conta de ".$this->getDono()."</p>";
             }
             else{
-                echo "Impossível depositar";
+                echo "<p>Impossível depositar</p>";
             }
         }
         public function sacar($v){
             if($this->getStatus()){
-                if($this->saldo>$v){
-                    $this->setSaldo($this->getSaldo()-$v);
-                
-                    $this->setSaldo($this->getSaldo()-$v);
+                if($this->getSaldo() >= $v){
+                    $this->setSaldo($this->getSaldo() - $v);
+                    echo "<p>Saque de R$$v autorizado na conta de ". $this->getDono()."</p>";
                 }
                 else{
-                    echo "Saldo insuficiente";
+                    echo "<p>Saldo insuficiente</p>";
                     
                 }
             }
             else{
-                echo "Impossivel sacar";
+                echo "<p>Impossivel sacar</p>";
             }
         }
         public function pagarMensal(){
-            $v = 0;
-            if($this->tipo == "CC"){
+            if($this->getTipo() == "CC"){
                 $v=12;
             }
-            elseif($this->tipo == "CP"){
+            else if($this->getTipo() == "CP"){
                 $v = 20;
             }
 
-            if($this->status == true){
-                if($this->setSaldo > $v){
-                    $this->setSaldo = $this->setSaldo - $v;
-                }
-                else{
-                    echo "Saldo insuficiente";
-                }
+            if($this->getStatus()){
+                $this->setSaldo($this->getSaldo() - $v);
+                echo "<p>Mensalidade de R$$v debitada da conta de ".$this->getDono()."</p>";
             }
             else{
-                echo "Impossível pagar";
+                echo "<p>Problemas com a conta, não possivel cobrar!</p>";
             }
         }
         
         //Metodos Especiais
         public function __construct(){
-            $this->saldo = 0;
-            $this->status = false;
+            $this->setSaldo(0);
+            $this->setStatus(false);
+            echo "<p>Conta criada com sucesso!</p>";
         }
         public function setNumConta($n){
             $this->numConta = $n;
@@ -105,8 +102,8 @@
         public function getSaldo(){
             return $this->saldo;
         }
-        public function setStatus($e){
-            $this->status = $e;
+        public function setStatus($s){
+            $this->status = $s;
         }
         public function getStatus(){
             return $this->status;
