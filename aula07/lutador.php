@@ -18,15 +18,15 @@
             echo " Origem: ".($this->getNacionalidade())." ";
             echo ($this->getIdade())." anos ";
             echo ($this->getAltura()). "m de altura ";
-            echo "Pesando ".($this->getPeso());
-            echo " Ganhou: ".($this->getVitorias());
-            echo " Perdeu: ".($this->getDerrotas());
-            echo " Empatou: ".($this->getEmpates());
+            echo "<strong>Pesando: </strong>".($this->getPeso())."kg";
+            echo " <strong>Ganhou: </strong>".($this->getVitorias());
+            echo " <strong>Perdeu: </strong>".($this->getDerrotas());
+            echo " <strong>Empatou: </strong>".($this->getEmpates());
             echo "<br><---------------------------->";
         }
         public function status(){
             echo "<br>";
-            echo ($this->getNome());
+            echo ("<mark>".$this->getNome()."</mark>");
             echo " é um peso ".($this->getCategoria())." ";
             echo ($this->getVitorias())." vitórias ";
             echo ($this->getDerrotas())." derrotas ";
