@@ -1,6 +1,5 @@
 <?php
     require_once 'publicacao.php';
-    require_once 'pessoa.php';
 
     class Livro implements Publicacao{
         //Atributos
