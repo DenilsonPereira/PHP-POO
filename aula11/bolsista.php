@@ -6,7 +6,7 @@
             echo "<p>Bolsa renovada!</p>";
         }
         public function setBolsa($b){
-            $this->bolsa = $bolsa;
+            $this->bolsa = $b;
         }
         public function getBolsa(){
             return $this->bolsa;
