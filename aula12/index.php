@@ -9,7 +9,6 @@
 <body>
     <pre>
         <?php
-            require_once 'Animal.php';
             require_once 'Mamifero.php';
             require_once 'Reptil.php';
             require_once 'Peixe.php';
@@ -22,10 +21,20 @@
             require_once 'Arara.php';
 
             $m = new Mamifero();
-            $a = new Arara();
+            $m->alimentar();
+            $m->setIdade(15);
+            $m->setPeso(40.2);
+            $m->setMembros(50);
+            print_r($m);
+            
             $c = new Canguru();
             $c->locomover();
             print_r($c);
+
+            $a = new Ave();
+            $a->setCorPena("Azul");
+            $a->locomover();
+            print_r($a);
         ?>
     </pre>
 </body>

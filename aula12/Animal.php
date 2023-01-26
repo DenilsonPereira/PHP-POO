@@ -3,12 +3,9 @@
         protected $peso;
         protected $idade;
         protected $membros;
-        public function locomover(){
-        }
-        public function alimentar(){
-        }
-        public function emitirSom(){ 
-        }
+        abstract function locomover();
+        abstract function alimentar();
+        abstract function emitirSom();
         public function setPeso($p){
             $this->peso = $p;
         }

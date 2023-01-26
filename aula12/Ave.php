@@ -14,4 +14,10 @@
         public function fazerNinho(){
             echo "Construiu um ninho!";
         }
+        public function setCorPena($cp){
+            $this->corPena = $cp;
+        }
+        public function getCorPena(){
+            return $this->corPena;
+        }
     }
