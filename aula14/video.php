@@ -1,12 +1,19 @@
 <?php
     require_once 'interface.php';
-    class Video extends AcoesVideo{
+    class Video implements AcoesVideo{
         private $titulo;
         private $avaliacao;
         private $views;
         private $curtidas;
         private $reproduzindo;
-        
+
+        public function __construct($titulo){
+            $this->titulo = $titulo;
+            $this->avaliacao = 1;
+            $this->views = 0;
+            $this->curtidas = 0;
+            $this->reproduzindo = false;
+        }
         public function setTitulo($t){
             $this->titulo = $t;
         }
@@ -38,12 +45,12 @@
             return $this->reproduzindo;
         }
         public function Play(){
-            
+            $this->reproduzindo = true;
         }
         public function Pause(){
-            
+            $this->reproduzindo = false;
         }
         public function Like(){
-            
+            $this->curtidas ++;
         }
     }
